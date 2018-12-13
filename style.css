@@ -1,0 +1,40 @@
+body {
+	background-color: #D4D2D5;
+	text-align: center;
+	color: white;
+}
+
+h1 {
+	color: #107E7D;
+	font-family: 'Century-Gothic', sans-serif;
+	font-size: 100px;
+	text-transform: bold;
+	padding: 0;
+	margin: 0px;
+}
+
+p{
+	color: #107E7D;
+}
+
+h3 {
+	color: #A17C6B;
+	padding: 0;
+	margin: 0px;
+}
+img {
+	height: 200px;
+	width: 130px;
+}
+#game-board {
+	background-color: white;
+	text-align: center;
+	border: 5px solid #6C969D;
+  	border-radius: 50px 20px;
+  	padding: 5px;
+  	width: 1250px;
+  	display: inline-block;
+}
+button{
+	padding: 5px;
+}
