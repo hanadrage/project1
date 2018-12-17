@@ -161,7 +161,7 @@ var flipCard = function () {
     cardsInPlay =[];
   }
   if(cardsFlipped == cards.length){
-	alert("Board cleared... generating new board");
+	alert("YOU WON! PLAY AGAIN SCORE: 100");
 	document.getElementById('game-board').innerHTML = "";
 	createBoard();
 }
