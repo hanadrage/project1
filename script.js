@@ -174,7 +174,7 @@ var checkForMatch = function() {
   
   //checking if the strings in the cardsinPlay array are matches
   if(cardsInPlay[0] === cardsInPlay[1]){
-    console.log("You found a match!");
+    alert("You found a match!");
     cardsFlipped += 2;
     var images = document.getElementsByClassName(cardsInPlay[0]);
     var images2 = document.getElementsByClassName(cardsInPlay[1]);
