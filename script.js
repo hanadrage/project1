@@ -120,36 +120,36 @@ var cards = [
 		name: "Three-of-Swords2",
 		cardImage: "pictures/three-of-swords.png"
 	}];
-
-
 var cardsInPlay = [];
-var myScore = 0;
-var timeloss;
+var cardsFlipped= [];
+var score = document.getElementsByClassName('score')[0];
+var timer = document.getElementsByClassName('timer')[0];
+var myMatchedCards;
+var endGame = document.getElementsByClassName('game-over')[0];
 var scoreIncrimenter;
+var timeLoss;
 
 
-//sorting the cards
-cards.sort(function() { 
-	return 0.5 - Math.random() 
+document.addEventListener("DOMContentLoaded", function(){
+	//shuffle the cards
+
+	document.getElementById('start').addEventListener('click', createBoard);
+	var myReset = document.getElementById("reset");
+  	myReset.addEventListener('click', createBoard);
+
+	//calling the function create board	
 });
-
-// var displayCard = function (){
-//    this.classList.toggle("open");
-//    this.classList.toggle("show");
-//    this.classList.toggle("disabled");
-// }
-
-
 
   
 var flipCard = function () {
   //get the card id of the card getting flipped
-  cardID = this.getAttribute('data-id');
+  cardID = this.getAttribute('id');
   console.log(this);
 
   
   //push card id object/string into new array
   cardsInPlay.push(cards[cardID].cardImage);
+  
 
 
   this.setAttribute('src', cards[cardID].cardImage);
@@ -160,23 +160,65 @@ var flipCard = function () {
     //empties cardsinPlay array
     cardsInPlay =[];
   }
+  if(cardsFlipped == cards.length){
+	alert("Board cleared... generating new board");
+	document.getElementById('game-board').innerHTML = "";
+	createBoard();
+}
 
 };
+
+
 
 var checkForMatch = function() {
   
   //checking if the strings in the cardsinPlay array are matches
   if(cardsInPlay[0] === cardsInPlay[1]){
-    alert("You found a match!");
-    score++;
+    console.log("You found a match!");
+    cardsFlipped += 2;
+    var images = document.getElementsByClassName(cardsInPlay[0]);
+    var images2 = document.getElementsByClassName(cardsInPlay[1]);
+    images[0].removeEventListener('click', flipCard);
+    images2[0].removeEventListener('click', flipCard);
+    var myMatchedCards = images;
   } else {
-    alert("Sorry, try again.");
-    
+    console.log("Sorry, try again.");
+    var images = document.getElementsByClassName(cardsInPlay[0]);
+    var images2 = document.getElementsByClassName(cardsInPlay[1]);
+    setTimeout( function(){
+    	images[0].setAttribute('src', 'pictures/the-back.jpg');
+    	images2[0].setAttribute('src', 'pictures/the-back.jpg');
+	}, 700);
   }
 }
 
-var createBoard = function() {
 
+function flipBoard(){
+	var cardsDown = document.getElementsByTagName('img');
+	for (var i = 0; i < cardsDown.length; i++){
+		cardsDown[i].setAttribute('src', 'pictures/the-back.jpg');
+		cardsDown[i].addEventListener('click', flipCard);
+	}
+
+}
+
+function destroyBoard(){
+	var myCards = document.getElementById("game-board");
+	myCards.innerHTML = "";
+}
+
+
+var createBoard = function() {
+	destroyBoard();
+	//shuffling the deck
+	cards.sort(function() { 
+		return 0.5 - Math.random() 
+	});
+
+	timeLoss = 59;
+    scoreIncrementer = 0;
+    flippedCards = [];
+  
   //forloop for 
   for (var i = 0; i < cards.length; i++) {
 
@@ -185,26 +227,22 @@ var createBoard = function() {
     scoreIncrimenter = 0;
 
     //setting the default image of the pic as the back
-    cardElement.setAttribute('src', "pictures/the-back.jpg");
-    cardElement.setAttribute('data-id', i);
-
-    //adding an event listener to the cards so they can flip when clicked
-    cardElement.addEventListener('click', flipCard);
+    cardElement.setAttribute('src', cards[i].cardImage);
+    cardElement.setAttribute('id', i);
+    cardElement.classList.add(cards[i].cardImage);
 
     //appending the cards to the game board
     document.getElementById('game-board').appendChild(cardElement);
 
 
   }
-
+  	
+  	console.log("hello");
+	setTimeout(flipBoard, 10000);
 }
 
-function addScore(){
-	if 
-}
 
-//calling the function create board
-createBoard();
+
 
 
 
