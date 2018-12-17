@@ -121,6 +121,7 @@ var cards = [
 		cardImage: "pictures/three-of-swords.png"
 	}];
 var cardsInPlay = [];
+var cardsFlipped= [];
 var score = document.getElementsByClassName('score')[0];
 var timer = document.getElementsByClassName('timer')[0];
 var myMatchedCards;
@@ -131,7 +132,6 @@ var timeLoss;
 
 document.addEventListener("DOMContentLoaded", function(){
 	//shuffle the cards
-	
 
 	document.getElementById('start').addEventListener('click', createBoard);
 	var myReset = document.getElementById("reset");
@@ -160,26 +160,35 @@ var flipCard = function () {
     //empties cardsinPlay array
     cardsInPlay =[];
   }
+  if(cardsFlipped == cards.length){
+	alert("Board cleared... generating new board");
+	document.getElementById('game-board').innerHTML = "";
+	createBoard();
+}
 
 };
+
 
 
 var checkForMatch = function() {
   
   //checking if the strings in the cardsinPlay array are matches
   if(cardsInPlay[0] === cardsInPlay[1]){
-    alert("You found a match!");
+    console.log("You found a match!");
+    cardsFlipped += 2;
     var images = document.getElementsByClassName(cardsInPlay[0]);
     var images2 = document.getElementsByClassName(cardsInPlay[1]);
     images[0].removeEventListener('click', flipCard);
     images2[0].removeEventListener('click', flipCard);
     var myMatchedCards = images;
   } else {
-    alert("Sorry, try again.");
+    console.log("Sorry, try again.");
     var images = document.getElementsByClassName(cardsInPlay[0]);
     var images2 = document.getElementsByClassName(cardsInPlay[1]);
-    images[0].setAttribute('src', 'pictures/the-back.jpg');
-    images2[0].setAttribute('src', 'pictures/the-back.jpg');
+    setTimeout( function(){
+    	images[0].setAttribute('src', 'pictures/the-back.jpg');
+    	images2[0].setAttribute('src', 'pictures/the-back.jpg');
+	}, 700);
   }
 }
 
