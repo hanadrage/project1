@@ -161,7 +161,11 @@ var flipCard = function () {
     cardsInPlay =[];
   }
   if(cardsFlipped == cards.length){
+<<<<<<< HEAD
 	alert("Board cleared... generating new board");
+=======
+	alert("YOU WON! PLAY AGAIN SCORE: 100");
+>>>>>>> 0c096af546aba6d9d73689ade5d32eb8469382a8
 	document.getElementById('game-board').innerHTML = "";
 	createBoard();
 }
@@ -174,7 +178,11 @@ var checkForMatch = function() {
   
   //checking if the strings in the cardsinPlay array are matches
   if(cardsInPlay[0] === cardsInPlay[1]){
+<<<<<<< HEAD
     console.log("You found a match!");
+=======
+    alert("You found a match!");
+>>>>>>> 0c096af546aba6d9d73689ade5d32eb8469382a8
     cardsFlipped += 2;
     var images = document.getElementsByClassName(cardsInPlay[0]);
     var images2 = document.getElementsByClassName(cardsInPlay[1]);
