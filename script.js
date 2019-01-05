@@ -1,22 +1,6 @@
 //cards array
 var cards = [
 	{
-		name: "Ace-of-Wands",
-		cardImage: "pictures/ace-of-wands.png"
-	},
-	{
-		name: "Death",
-		cardImage: "pictures/death.png"
-	},
-	{
-		name: "Five-of-Kings",
-		cardImage:"pictures/five-of-kings.png"
-	},
-	{
-		name: "King-of-Rings",
-		cardImage: "pictures/king-of-rings.png"
-	},
-	{
 		name: "Knight-of-Rings",
 		cardImage: "pictures/knight-of-rings.png"
 	},
@@ -25,8 +9,8 @@ var cards = [
 		cardImage: "pictures/page-of-rings.png"
 	},
 	{
-		name: "Queen-of-Rings",
-		cardImage: "pictures/queen-of-rings.png"
+		name: "Ace-of-Cups",
+		cardImage: "pictures/ace-of-cups.png"
 	},
 	{
 		name: "The-Fool",
@@ -53,30 +37,6 @@ var cards = [
 		cardImage: "pictures/the-sun.png"
 	},
 	{
-		name: "Three-of-Rings",
-		cardImage: "pictures/three-of-rings.png"
-	},
-	{
-		name: "Three-of-Swords",
-		cardImage: "pictures/three-of-swords.png"
-	},
-	{
-		name: "Ace-of-Cups2",
-		cardImage: "pictures/ace-of-cups.png"
-	},
-	{
-		name: "Death2",
-		cardImage: "pictures/death.png"
-	},
-	{
-		name: "Five-of-Kings2",
-		cardImage:"pictures/five-of-kings.png"
-	},
-	{
-		name: "King-of-Rings2",
-		cardImage: "pictures/king-of-rings.png"
-	},
-	{
 		name: "Knight-of-Rings2",
 		cardImage: "pictures/knight-of-rings.png"
 	},
@@ -85,8 +45,8 @@ var cards = [
 		cardImage: "pictures/page-of-rings.png"
 	},
 	{
-		name: "Queen-of-Rings2",
-		cardImage: "pictures/queen-of-rings.png"
+		name: "Ace-of-cups2",
+		cardImage: "pictures/ace-of-cups.png"
 	},
 	{
 		name: "The-Fool2",
@@ -111,23 +71,12 @@ var cards = [
 	{
 		name: "The-sun2",
 		cardImage: "pictures/the-sun.png"
-	},
-	{
-		name: "Three-of-Rings2",
-		cardImage: "pictures/three-of-rings.png"
-	},
-	{
-		name: "Three-of-Swords2",
-		cardImage: "pictures/three-of-swords.png"
 	}];
 var cardsInPlay = [];
 var cardsFlipped= [];
-var score = document.getElementsByClassName('score')[0];
-var timer = document.getElementsByClassName('timer')[0];
 var myMatchedCards;
 var endGame = document.getElementsByClassName('game-over')[0];
-var scoreIncrimenter;
-var timeLoss;
+time = 30
 
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -159,13 +108,14 @@ var flipCard = function () {
     checkForMatch();
     //empties cardsinPlay array
     cardsInPlay =[];
+    var images = document.getElementsByTagName('img')
+  	images[0].removeEventListener('click', flipCard);
   }
   if(cardsFlipped == cards.length){
-<<<<<<< HEAD
+
 	alert("Board cleared... generating new board");
-=======
 	alert("YOU WON! PLAY AGAIN SCORE: 100");
->>>>>>> 0c096af546aba6d9d73689ade5d32eb8469382a8
+
 	document.getElementById('game-board').innerHTML = "";
 	createBoard();
 }
@@ -178,11 +128,13 @@ var checkForMatch = function() {
   
   //checking if the strings in the cardsinPlay array are matches
   if(cardsInPlay[0] === cardsInPlay[1]){
-<<<<<<< HEAD
+
     console.log("You found a match!");
-=======
+    var newScore = document.getElementById("score").innerHTML;
+    var value = parseInt(newScore,10) + 20;
+    document.getElementById("score").innerHTML = value;
     alert("You found a match!");
->>>>>>> 0c096af546aba6d9d73689ade5d32eb8469382a8
+
     cardsFlipped += 2;
     var images = document.getElementsByClassName(cardsInPlay[0]);
     var images2 = document.getElementsByClassName(cardsInPlay[1]);
@@ -215,6 +167,14 @@ function destroyBoard(){
 	myCards.innerHTML = "";
 }
 
+function tick (){
+	time -= 1;
+	document.getElementById('timer').textContent = time;
+	if(time === 0){
+		destroyBoard();
+		clearInterval(interval);
+	}
+}
 
 var createBoard = function() {
 	destroyBoard();
@@ -223,9 +183,9 @@ var createBoard = function() {
 		return 0.5 - Math.random() 
 	});
 
-	timeLoss = 59;
-    scoreIncrementer = 0;
     flippedCards = [];
+    interval = setInterval(tick, 1000)
+
   
   //forloop for 
   for (var i = 0; i < cards.length; i++) {
@@ -246,18 +206,8 @@ var createBoard = function() {
   }
   	
   	console.log("hello");
-	setTimeout(flipBoard, 10000);
+	setTimeout(flipBoard, 5000);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

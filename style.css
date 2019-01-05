@@ -24,68 +24,69 @@
     }
 }
 body {
-	background-color: #D4D2D5;
-	text-align: center;
-	color: white;
-	-webkit-animation: bgcolor 20s infinite;
+  background-color: #D4D2D5;
+  text-align: center;
+  color: white;
+  -webkit-animation: bgcolor 20s infinite;
     animation: bgcolor 10s infinite;
     -webkit-animation-direction: alternate;
     animation-direction: alternate;
 }
 
 button {
-	text-align: center;
-	}
+  text-align: center;
+  }
 
 h1 {
-	color: black;
-	font-family: 'Century-Gothic', sans-serif;
-	font-size: 100px;
-	text-transform: bold;
-	padding: 0;
-	margin: 0px;
+  color: black;
+  font-family: 'Century-Gothic', sans-serif;
+  font-size: 100px;
+  text-transform: bold;
+  padding: 0;
+  margin: 0px;
 }
 
 p{
-	color: black;
-	font-size: 20px;
+  color: black;
+  font-size: 20px;
 }
 
-h3 {
-	color: #28112B;
-	padding: 0;
-	margin: 0px;
+h5 {
+  color: #28112B;
+  padding: 0;
+  margin-bottom: -100px;
+  text-align: center;
 }
 img {
-	height: 200px;
-	width: 130px;
+  height: 200px;
+  width: 130px;
 }
 #game-board {
-	background-color: white;
-	text-align: center;
-	border: 5px solid black;
-  	border-radius: 50px 20px;
-  	padding: 5px;
-  	width: 1250px;
-  	display: inline-block;
+  background-color: white;
+  text-align: center;
+  border: 5px solid black;
+    border-radius: 50px 20px;
+    padding: 5px;
+    width: 1250px;
+    display: inline-block;
 <<<<<<< HEAD
-  	box-shadow: 20px 20px 50px 10px black;
+    box-shadow: 20px 20px 50px 10px black;
 }
 button{
-	padding: 5px;
+  padding: 5px;
 }
 
 =======
-  	box-shadow: 20px 20px 50px 10px black;  	
+    box-shadow: 20px 20px 50px 10px black;    
 }
 
 button{
-	padding: 5px;
+  padding: 5px;
 }
 img{
-	opacity: 1;
+  opacity: 1;
 }
->>>>>>> 0c096af546aba6d9d73689ade5d32eb8469382a8
+
 img:active {
   /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 0.5s; 
